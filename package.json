@@ -1,0 +1,45 @@
+{
+  "name": "simple-circle-progress",
+  "version": "1.0.0",
+  "description": "a simple circe progress",
+  "scripts": {
+    "dev": "rollup -c --environment NODE_ENV:dev -w",
+    "test": "rollup -c --environment NODE_ENV:test",
+    "build": "rollup -c --environment NODE_ENV:prod"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nicoleffect/simple-circle-progress/issues"
+  },
+  "homepage": "https://nicoleffect.github.io/simple-circle-progress/examples/index.html",
+  "keywords": [
+    "circe",
+    "progress",
+    "canvas"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicoleffect/simple-circle-progress"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-external-helpers": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/runtime-corejs2": "^7.4.2",
+    "eslint": "^5.15.3",
+    "rollup": "^1.7.3",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.2.2",
+    "rollup-plugin-eslint": "^5.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^4.0.1",
+    "rollup-plugin-replace": "^2.1.1",
+    "rollup-plugin-uglify": "^6.0.2"
+  },
+  "directories": {
+    "example": "examples"
+  },
+  "author": "Nicole Wong"
+}
