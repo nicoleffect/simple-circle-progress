@@ -3,28 +3,26 @@ import Circle from './Circle'
 function circleProgress ({
   canvas,
   total,
-  speed,
-  clockwise = false,
-  dash = false,
+  rate,
+  clockwise,
+  dash,
+  lineCap,
   circleStyle = '#fdf6a4',
-  circleWidth = 12,
-  textStyle = '#ffffff',
-  textFont = '34px sans-serif',
+  lineWidth = 10,
   trackStyle = '#ffffff',
-  trackWidth = 12
+  textStyle = '#ffffff'
 }) {
   return new Circle({
     canvas,
     total,
-    speed,
+    rate,
     clockwise,
     dash,
+    lineCap,
     circleStyle,
-    circleWidth,
-    textStyle,
-    textFont,
+    lineWidth,
     trackStyle,
-    trackWidth
+    textStyle
   })
 }
 
