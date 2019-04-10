@@ -40,20 +40,42 @@
 
   <script src="../dist/simple-circle-progress.iife.js"></script>
   <script>
-    const canvas0 = document.getElementById('canvas0')
-    circleProgress({ canvas: canvas0, rate: 80 })
+    circleProgress({
+      canvas: document.getElementById('canvas0'),
+      rate: 80
+    })
 
-    const canvas1 = document.getElementById('canvas1')
-    circleProgress({ canvas: canvas1, rate: 76, orbitStyle: '#ffffff', circleStyle: '#2879ff' })
+    circleProgress({
+      canvas: document.getElementById('canvas1'),
+      rate: 76,
+      orbitStyle: '#ffffff',
+      circleStyle: '#2879ff'
+    })
 
-    const canvas2 = document.getElementById('canvas2')
-    circleProgress({ canvas: canvas2, rate: 88, circleStyle: '#ffd50a', dash: true, orbitStyle: '#ffffff' })
+    circleProgress({
+      canvas: document.getElementById('canvas2'),
+      rate: 88,
+      circleStyle: '#ffd50a',
+      dash: true,
+      orbitStyle: '#ffffff'
+    })
 
-    const canvas3 = document.getElementById('canvas3')
-    circleProgress({ canvas: canvas3, rate: 82, circleStyle: '#84d276', textStyle: '#E57373', clockwise: true })
+    circleProgress({
+      canvas: document.getElementById('canvas3'),
+      rate: 82,
+      circleStyle: '#84d276',
+      textStyle: '#E57373',
+      clockwise: true
+    })
 
-    const canvas4 = document.getElementById('canvas4')
-    circleProgress({ canvas: canvas4, rate: 78, circleStyle: '#E57373', textStyle: '', lineCap: 'round', lineWidth: 18 })
+    circleProgress({
+      canvas: document.getElementById('canvas4'),
+      rate: 78,
+      circleStyle: '#E57373',
+      textStyle: '',
+      lineCap: 'round',
+      lineWidth: 18
+    })
 
 
   </script>
