@@ -9,6 +9,7 @@ dot and line, dots to dots connect
 ```
 amd、cjs、es、iife、umd
 ```
+## usage
 ```
 circleProgress ({
   canvas,
