@@ -21,22 +21,18 @@ amd、cjs、es、iife、umd
 // npm install simple-circle-progress
 import circleProgress from 'simple-circle-progress'
 
- circleProgress({
+ circleProgress ({
   canvas: document.getElementById('canvas'), // require
-  color: '255,255,255', // default
-  r: 4, // default
-  distance: 100, // default, distance of dot to dot
-  isConnect: true, // default, if you don't need lines, set it false
-  isOnClick: true, // default, event for click or touchstart
-  isOnMove: true// default
- })
+  isAnim = true, // default
+  rate, // number
+  clockwise,
+  dash,
+  lineCap,
+  circleStyle = '#000000', // default
+  lineWidth = 10, // default
+  orbitStyle = '',
+  textStyle = '#000000' // default
+})
 
-// or
-
-<script src="https://nicoleffect.github.io/simple-circle-progress/dist/simple-circle-progress.umd.min.js"></script>
-<script>
-  const canvas = document.getElementById('canvas')
-  circleProgress({ canvas })
-</script>
 
 ```

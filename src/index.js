@@ -2,26 +2,26 @@ import Circle from './Circle'
 
 function circleProgress ({
   canvas,
-  total,
+  isAnim = true,
   rate,
   clockwise,
   dash,
   lineCap,
-  circleStyle = '#fdf6a4',
+  circleStyle = '#000000',
   lineWidth = 10,
-  trackStyle = '#ffffff',
-  textStyle = '#ffffff'
+  orbitStyle = '',
+  textStyle = '#000000'
 }) {
   return new Circle({
     canvas,
-    total,
+    isAnim,
     rate,
     clockwise,
     dash,
     lineCap,
     circleStyle,
     lineWidth,
-    trackStyle,
+    orbitStyle,
     textStyle
   })
 }

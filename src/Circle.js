@@ -1,9 +1,10 @@
-import { setContext } from './utils'
+import { setContext, isMobile } from './utils'
 
-function drawCircle ({ centerX, centerY, strokeStyle, lineWidth, rate, dash = true, lineCap = 'butt', clockwise = true }) {
+function drawCircle ({ centerX, centerY, strokeStyle, lineWidth, rate, dash = false, lineCap = 'butt', clockwise = false }) {
   this.save()
+  const r = centerX - lineWidth
   if (lineCap === 'butt' && dash) {
-    this.setLineDash([(Math.PI * 100 / lineWidth), 2])
+    this.setLineDash([(Math.PI * 2 * r / 12 - 2), 2])
   }
   this.lineCap = lineCap
   this.strokeStyle = strokeStyle
@@ -12,7 +13,7 @@ function drawCircle ({ centerX, centerY, strokeStyle, lineWidth, rate, dash = tr
   const pi = Math.PI * 2 / 100 * rate
   let eAngle = clockwise ? sAngle - pi : sAngle + pi
   this.beginPath()
-  this.arc(centerX, centerY, centerX - lineWidth, sAngle, eAngle, clockwise)
+  this.arc(centerX, centerY, r, sAngle, eAngle, clockwise)
   this.stroke()
   this.restore()
 }
@@ -28,58 +29,119 @@ function drawText ({ centerX, centerY, textStyle, textFont, content }) {
 }
 
 class Circle {
-  constructor ({ canvas, total, rate, clockwise, dash, lineCap, circleStyle, lineWidth, trackStyle, textStyle }) {
+  constructor ({ canvas, isAnim, rate, clockwise, dash, lineCap, circleStyle, lineWidth, orbitStyle, textStyle }) {
     const {
       ctx,
       rect
     } = setContext(canvas)
     this.ctx = ctx
+    this.rect = rect
     const {
       width,
       height
-    } = rect
+    } = this.rect
     this.centerX = width / 2
     this.centerY = height / 2
-    console.log(this.centerX)
-    console.log(this.centerY)
-    this.total = total
-    this.rate = rate
     this.dash = dash
+    this.rate = rate
     this.lineCap = lineCap
     this.clockwise = clockwise
     this.circleStyle = circleStyle
     this.lineWidth = lineWidth
     this.textStyle = textStyle
-    this.trackStyle = trackStyle
-    // console.log(2)
-    if (rate > 0) {
+    this.orbitStyle = orbitStyle
+
+    this.init(canvas, isAnim)
+  }
+  init (canvas, isAnim) {
+    const {
+      centerX,
+      centerY,
+      lineWidth,
+      dash,
+      rate
+    } = this
+
+    if (isAnim) {
+      this.loading = false
       this.anim()
+      const event = isMobile ? 'touchstart' : 'click'
+      canvas.addEventListener(event, () => {
+        this.anim()
+      })
     } else {
-      this.draw()
+      this.draw(rate)
     }
   }
-  draw () {
+  draw (rate) {
     const {
       centerX,
       centerY,
       textStyle,
       circleStyle,
       lineWidth,
-      total,
-      rate,
       dash,
       lineCap,
       clockwise,
-      trackStyle
+      orbitStyle
     } = this
-    if (trackStyle) {
-      drawCircle.call(this.ctx, { centerX, centerY, strokeStyle: trackStyle, lineWidth, rate: 100, dash })
+    if (orbitStyle) {
+      drawCircle.call(this.ctx, {
+        centerX,
+        centerY,
+        strokeStyle: orbitStyle,
+        lineWidth,
+        rate: 100,
+        dash
+      })
     }
-    drawText.call(this.ctx, { centerX, centerY, textStyle, textFont: `${Math.floor(centerX / 1.5)}px sans-serif`, content: parseInt(total) })
-    drawCircle.call(this.ctx, { centerX, centerY, strokeStyle: circleStyle, lineWidth, rate: total, dash, lineCap, clockwise })
+    textStyle && drawText.call(this.ctx, {
+      centerX,
+      centerY,
+      textStyle,
+      textFont: `${Math.floor(centerX / 1.5)}px sans-serif`,
+      content: parseInt(rate)
+    })
+    drawCircle.call(this.ctx, {
+      centerX,
+      centerY,
+      strokeStyle: circleStyle,
+      lineWidth,
+      rate,
+      dash,
+      lineCap,
+      clockwise
+    })
   }
-  anim () {
-
+  anim (rate) {
+    return new Promise((resolve, reject) => {
+      if (this.loading) {
+        resolve()
+        return
+      }
+      this.loading = true
+      const requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame
+      const cancelAnimFrame = window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.msCancelAnimationFrame
+      let speed = 1
+      let animKey
+      const {
+        width,
+        height
+      } = this.rect
+      const _this = this
+      return (function _animateUpdate () {
+        if (speed >= _this.rate) {
+          cancelAnimFrame(animKey)
+          _this.loading = false
+          resolve()
+          return
+        }
+        _this.ctx.clearRect(0, 0, width, height)
+        _this.draw(speed)
+        speed++
+        animKey = requestAnimFrame(_animateUpdate)
+      })()
+    })
   }
 }
 
