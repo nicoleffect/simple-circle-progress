@@ -8,8 +8,7 @@
  * github: https://github.com/nicoleffect/simple-circle-progress
  * demo: https://nicoleffect.github.io/simple-circle-progress/examples/index.html
  */
-var circleProgress = (function () {
-  'use strict';
+define(function () { 'use strict';
 
   // 7.1.4 ToInteger
   var ceil = Math.ceil;
@@ -1551,4 +1550,4 @@ var circleProgress = (function () {
 
   return circleProgress;
 
-}());
+});
