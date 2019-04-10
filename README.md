@@ -9,7 +9,20 @@ dot and line, dots to dots connect
 ```
 amd、cjs、es、iife、umd
 ```
-
+```
+circleProgress ({
+  canvas,
+  isAnim = true, // default
+  rate, // number
+  clockwise,
+  dash,
+  lineCap,
+  circleStyle = '#000000', // default
+  lineWidth = 10, // default
+  orbitStyle = '',
+  textStyle = '#000000' // default
+})
+```
 ## examples
 
 ![demo](https://nicoleffect.github.io/simple-circle-progress/examples/img/example.png)
