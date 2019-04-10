@@ -1,6 +1,6 @@
 # simple-circle-progress
 
-dot and line, dots to dots connect
+a simple circe progress
 
 [demo -->](https://nicoleffect.github.io/simple-circle-progress/examples/index.html)
 
