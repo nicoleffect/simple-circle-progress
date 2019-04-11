@@ -50,7 +50,7 @@ class Circle {
     this.lineWidth = lineWidth
     this.textStyle = textStyle
     this.orbitStyle = orbitStyle
-    this.completeCallback = () => { }
+    this.completeCallback = null
     this.init(canvas, isAnim)
   }
   init (canvas, isAnim) {
@@ -131,7 +131,7 @@ class Circle {
       if (speed >= _this.rate) {
         cancelAnimFrame(animKey)
         _this.loading = false
-        _this.completeCallback()
+        _this.completeCallback && _this.completeCallback()
         return
       }
       _this.ctx.clearRect(0, 0, width, height)
@@ -141,11 +141,7 @@ class Circle {
     })()
   }
   onComplete (callback) {
-    if (!callback) {
-      return
-    }
     this.completeCallback = callback
-    // console.log(this.completeCallback)
   }
 }
 

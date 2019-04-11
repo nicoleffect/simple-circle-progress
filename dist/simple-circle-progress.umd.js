@@ -1,5 +1,5 @@
 /*!
- * simple-circle-progress v1.0.2
+ * simple-circle-progress v1.0.3
  * (c) 2019 Nicole Wong
  * Released under the MIT License.
  */
@@ -400,9 +400,7 @@
 	    this.lineWidth = lineWidth;
 	    this.textStyle = textStyle;
 	    this.orbitStyle = orbitStyle;
-
-	    this.completeCallback = function () {};
-
+	    this.completeCallback = null;
 	    this.init(canvas, isAnim);
 	  }
 
@@ -492,9 +490,7 @@
 	        if (speed >= _this.rate) {
 	          cancelAnimFrame(animKey);
 	          _this.loading = false;
-
-	          _this.completeCallback();
-
+	          _this.completeCallback && _this.completeCallback();
 	          return;
 	        }
 
@@ -509,11 +505,7 @@
 	  }, {
 	    key: "onComplete",
 	    value: function onComplete(callback) {
-	      if (!callback) {
-	        return;
-	      }
-
-	      this.completeCallback = callback; // console.log(this.completeCallback)
+	      this.completeCallback = callback;
 	    }
 	  }]);
 
