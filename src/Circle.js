@@ -2,7 +2,7 @@ import { setContext, isMobile } from './utils'
 
 function drawCircle ({ centerX, centerY, strokeStyle, lineWidth, rate, dash = false, lineCap = 'butt', clockwise = false }) {
   this.save()
-  const r = centerX - lineWidth
+  const r = centerX - lineWidth / 2 - 1
   if (lineCap === 'butt' && dash) {
     this.setLineDash([(Math.PI * 2 * r / 12 - 2), 2])
   }

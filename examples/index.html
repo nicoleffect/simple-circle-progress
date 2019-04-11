@@ -10,14 +10,18 @@
   <link rel="shortcut icon" href="favicon.ico" />
   <title>Simple Circle Progress</title>
   <style>
-    html,
-    body {
+    html {
       height: 100%;
       width: 100%;
+    }
+
+    body {
       margin: 0;
-      padding: 0;
+      padding: 10px;
+      box-sizing: border-box;
       overflow: hidden;
       background: #e7eaed;
+      text-align: center
     }
 
 
@@ -25,7 +29,8 @@
       width: 120px;
       height: 120px;
       box-sizing: border-box;
-
+      margin: 10px;
+      vertical-align: middle
     }
 
   </style>
@@ -34,11 +39,15 @@
 <body>
   <div>
     <canvas id="canvas0"></canvas>
-    <button onclick="circle0.anim()">click me or circle one</button>
-    <span id="desc"></span>
+    <div style="display:inline-block;text-align: left">
+      <p id="desc">&nbsp;</p>
+      <button onclick="circle0.anim()">click me or the circle</button>
+
+    </div>
+
   </div>
 
-
+  <p>click the circles:</p>
   <canvas id="canvas1"></canvas>
   <canvas id="canvas2"></canvas>
   <canvas id="canvas3"></canvas>
@@ -53,7 +62,7 @@
     var count = 0
     circle0.onComplete(() => {
       count++
-      document.getElementById('desc').innerHTML = count
+      document.getElementById('desc').innerHTML = 'count: ' + count
     })
 
 

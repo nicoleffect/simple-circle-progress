@@ -1,5 +1,5 @@
 /*!
- * simple-circle-progress v1.0.3
+ * simple-circle-progress v1.1.1
  * (c) 2019 Nicole Wong
  * Released under the MIT License.
  */
@@ -325,7 +325,7 @@ function drawCircle(_ref) {
       _ref$clockwise = _ref.clockwise,
       clockwise = _ref$clockwise === void 0 ? false : _ref$clockwise;
   this.save();
-  var r = centerX - lineWidth;
+  var r = centerX - lineWidth / 2 - 1;
 
   if (lineCap === 'butt' && dash) {
     this.setLineDash([Math.PI * 2 * r / 12 - 2, 2]);
