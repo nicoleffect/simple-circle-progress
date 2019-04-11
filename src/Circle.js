@@ -50,7 +50,7 @@ class Circle {
     this.lineWidth = lineWidth
     this.textStyle = textStyle
     this.orbitStyle = orbitStyle
-
+    this.completeCallback = () => { }
     this.init(canvas, isAnim)
   }
   init (canvas, isAnim) {
@@ -113,35 +113,39 @@ class Circle {
       clockwise
     })
   }
-  anim (rate) {
-    return new Promise((resolve, reject) => {
-      if (this.loading) {
-        resolve()
+  anim () {
+    if (this.loading) {
+      return
+    }
+    this.loading = true
+    const requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame
+    const cancelAnimFrame = window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.msCancelAnimationFrame
+    let speed = 1
+    let animKey
+    const {
+      width,
+      height
+    } = this.rect
+    const _this = this
+    return (function _animateUpdate () {
+      if (speed >= _this.rate) {
+        cancelAnimFrame(animKey)
+        _this.loading = false
+        _this.completeCallback()
         return
       }
-      this.loading = true
-      const requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame
-      const cancelAnimFrame = window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.msCancelAnimationFrame
-      let speed = 1
-      let animKey
-      const {
-        width,
-        height
-      } = this.rect
-      const _this = this
-      return (function _animateUpdate () {
-        if (speed >= _this.rate) {
-          cancelAnimFrame(animKey)
-          _this.loading = false
-          resolve()
-          return
-        }
-        _this.ctx.clearRect(0, 0, width, height)
-        _this.draw(speed)
-        speed++
-        animKey = requestAnimFrame(_animateUpdate)
-      })()
-    })
+      _this.ctx.clearRect(0, 0, width, height)
+      _this.draw(speed)
+      speed++
+      animKey = requestAnimFrame(_animateUpdate)
+    })()
+  }
+  onComplete (callback) {
+    if (!callback) {
+      return
+    }
+    this.completeCallback = callback
+    // console.log(this.completeCallback)
   }
 }
 

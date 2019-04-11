@@ -32,7 +32,13 @@
 </head>
 
 <body>
-  <canvas id="canvas0"></canvas>
+  <div>
+    <canvas id="canvas0"></canvas>
+    <button onclick="circle0.anim()">click me or circle one</button>
+    <span id="desc"></span>
+  </div>
+
+
   <canvas id="canvas1"></canvas>
   <canvas id="canvas2"></canvas>
   <canvas id="canvas3"></canvas>
@@ -40,10 +46,16 @@
 
   <script src="../dist/simple-circle-progress.iife.js"></script>
   <script>
-    circleProgress({
+    var circle0 = circleProgress({
       canvas: document.getElementById('canvas0'),
       rate: 80
     })
+    var count = 0
+    circle0.onComplete(() => {
+      count++
+      document.getElementById('desc').innerHTML = count
+    })
+
 
     circleProgress({
       canvas: document.getElementById('canvas1'),

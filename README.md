@@ -11,9 +11,9 @@ amd、cjs、es、iife、umd
 ```
 ## usage
 ```
-circleProgress ({
+const circle = circleProgress ({
   canvas,
-  isAnim = true, // default
+  isAnim = true, // default, click the circle to trigger animation
   rate, // number
   clockwise,
   dash,
@@ -23,6 +23,16 @@ circleProgress ({
   orbitStyle = '',
   textStyle = '#000000' // default
 })
+
+// plus
+
+circle.onComplete(()=>{
+  // progress done
+})
+
+// you can click the circle to trigger animation or do this
+circle.anim() // trigger animation
+
 ```
 ## examples
 
