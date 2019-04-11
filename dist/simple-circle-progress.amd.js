@@ -1,5 +1,5 @@
 /*!
- * simple-circle-progress v1.1.1
+ * simple-circle-progress v1.1.2
  * (c) 2019 Nicole Wong
  * Released under the MIT License.
  */
@@ -292,18 +292,27 @@ define(function () { 'use strict';
 	  return /Android|webOS|iPhone|iPod|BlackBerry/i.test(window.navigator.userAgent);
 	}();
 
+	/*!
+	 * canvas-retina v1.0.0
+	 * (c) 2019 Nicole Wong
+	 * Released under the MIT License.
+	 */
+
+	/*
+	 * github: https://github.com/nicoleffect/canvas-retina
+	 * demo: https://github.com/nicoleffect/canvas-retina
+	 */
 	function getPixelRatio(ctx) {
 	  var backingStore = ctx.backingStorePixelRatio || ctx.webkitBackingStorePixelRatio || ctx.mozBackingStorePixelRatio || ctx.msBackingStorePixelRatio || ctx.oBackingStorePixelRatio || ctx.backingStorePixelRatio || 1;
 	  return (window.devicePixelRatio || 1) / backingStore;
 	}
 
-	function setContext(canvas) {
+	function canvasRetina(canvas) {
 	  var rect = canvas.getBoundingClientRect();
 	  var width = rect.width;
 	  var height = rect.height;
 	  var ctx = canvas.getContext('2d');
-	  var pixelRatio = getPixelRatio(ctx); // console.log(pixelRatio)
-
+	  var pixelRatio = getPixelRatio(ctx);
 	  canvas.width = width * pixelRatio;
 	  canvas.height = height * pixelRatio;
 	  ctx.scale(pixelRatio, pixelRatio);
@@ -313,6 +322,8 @@ define(function () { 'use strict';
 	    rect: rect
 	  };
 	}
+
+	var canvasRetina$1 = canvasRetina;
 
 	function drawCircle(_ref) {
 	  var centerX = _ref.centerX,
@@ -377,9 +388,9 @@ define(function () { 'use strict';
 
 	    classCallCheck(this, Circle);
 
-	    var _setContext = setContext(canvas),
-	        ctx = _setContext.ctx,
-	        rect = _setContext.rect;
+	    var _canvasRetina = canvasRetina$1(canvas),
+	        ctx = _canvasRetina.ctx,
+	        rect = _canvasRetina.rect;
 
 	    this.ctx = ctx;
 	    this.rect = rect;

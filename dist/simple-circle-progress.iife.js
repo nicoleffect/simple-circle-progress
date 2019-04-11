@@ -1,5 +1,5 @@
 /*!
- * simple-circle-progress v1.1.1
+ * simple-circle-progress v1.1.2
  * (c) 2019 Nicole Wong
  * Released under the MIT License.
  */

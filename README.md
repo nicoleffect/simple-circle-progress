@@ -4,11 +4,6 @@ a simple circe progress
 
 [demo -->](https://nicoleffect.github.io/simple-circle-progress/examples/index.html)
 
-## mode
-
-```
-amd、cjs、es、iife、umd
-```
 ## usage
 ```
 const circle = circleProgress ({
@@ -79,4 +74,18 @@ circleProgress({
   lineWidth: 18
 })
 
+```
+```
+// or
+<script src="https://nicoleffect.github.io/simple-circle-progress/dist/simple-circle-progress.iife.min.js"></script>
+
+circleProgress({
+  canvas: document.getElementById('canvas0'),
+  rate: 80
+})
+```
+## all modes
+
+```
+amd、cjs、es、iife、umd
 ```
