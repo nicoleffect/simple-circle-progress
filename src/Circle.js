@@ -1,4 +1,5 @@
-import { setContext, isMobile } from './utils'
+import { isMobile } from './utils'
+import canvasRetina from 'canvas-retina'
 
 function drawCircle ({ centerX, centerY, strokeStyle, lineWidth, rate, dash = false, lineCap = 'butt', clockwise = false }) {
   this.save()
@@ -33,7 +34,7 @@ class Circle {
     const {
       ctx,
       rect
-    } = setContext(canvas)
+    } = canvasRetina(canvas)
     this.ctx = ctx
     this.rect = rect
     const {

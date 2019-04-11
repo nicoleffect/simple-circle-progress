@@ -1,6 +1,6 @@
 {
   "name": "simple-circle-progress",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "a simple circe progress",
   "scripts": {
     "dev": "rollup -c --environment NODE_ENV:dev -w",
@@ -42,5 +42,8 @@
   "directories": {
     "example": "examples"
   },
-  "author": "Nicole Wong"
+  "author": "Nicole Wong",
+  "dependencies": {
+    "canvas-retina": "^1.0.1"
+  }
 }
