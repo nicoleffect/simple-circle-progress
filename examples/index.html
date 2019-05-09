@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
@@ -52,26 +52,29 @@
   <canvas id="canvas2"></canvas>
   <canvas id="canvas3"></canvas>
   <canvas id="canvas4"></canvas>
+  <div class="box">
+    <canvas id="canvas5"></canvas>
+    <span>评分</span>
+  </div>
 
   <script src="../dist/simple-circle-progress.iife.js"></script>
   <script>
     var circle0 = circleProgress({
       canvas: document.getElementById('canvas0'),
       rate: 80
-    })
-    var count = 0
+    });
+    var count = 0;
     circle0.onComplete(() => {
-      count++
-      document.getElementById('desc').innerHTML = 'count: ' + count
-    })
-
+      count++;
+      document.getElementById('desc').innerHTML = 'count: ' + count;
+    });
 
     circleProgress({
       canvas: document.getElementById('canvas1'),
       rate: 76,
       orbitStyle: '#ffffff',
       circleStyle: '#2879ff'
-    })
+    });
 
     circleProgress({
       canvas: document.getElementById('canvas2'),
@@ -79,7 +82,7 @@
       circleStyle: '#ffd50a',
       dash: true,
       orbitStyle: '#ffffff'
-    })
+    });
 
     circleProgress({
       canvas: document.getElementById('canvas3'),
@@ -87,7 +90,7 @@
       circleStyle: '#84d276',
       textStyle: '#E57373',
       clockwise: true
-    })
+    });
 
     circleProgress({
       canvas: document.getElementById('canvas4'),
@@ -96,8 +99,16 @@
       textStyle: '',
       lineCap: 'round',
       lineWidth: 18
-    })
+    });
 
+    circleProgress({
+      canvas: document.getElementById('canvas5'),
+      rate: 78,
+      circleStyle: '#E57373',
+      textStyle: '',
+      lineCap: 'round',
+      lineWidth: 18
+    });
 
   </script>
 </body>

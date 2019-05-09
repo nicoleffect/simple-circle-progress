@@ -19,18 +19,18 @@ function drawCircle ({ centerX, centerY, strokeStyle, lineWidth, rate, dash = fa
   this.restore()
 }
 
-function drawText ({ centerX, centerY, textStyle, textFont, content }) {
+function drawText ({ centerX, centerY, textStyle, textFont, textBaseline, content }) {
   this.save()
   this.fillStyle = textStyle
   this.font = textFont
   this.textAlign = 'center'
-  this.textBaseline = 'middle'
+  this.textBaseline = textBaseline
   this.fillText(content, centerX, centerY)
   this.restore()
 }
 
 class Circle {
-  constructor ({ canvas, isAnim, rate, clockwise, dash, lineCap, circleStyle, lineWidth, orbitStyle, textStyle }) {
+  constructor ({ canvas, isAnim, rate, clockwise, dash, lineCap, circleStyle, lineWidth, orbitStyle, textStyle, textBaseline }) {
     const {
       ctx,
       rect
@@ -50,6 +50,7 @@ class Circle {
     this.circleStyle = circleStyle
     this.lineWidth = lineWidth
     this.textStyle = textStyle
+    this.textBaseline = textBaseline
     this.orbitStyle = orbitStyle
     this.completeCallback = null
     this.init(canvas, isAnim)
@@ -84,7 +85,8 @@ class Circle {
       dash,
       lineCap,
       clockwise,
-      orbitStyle
+      orbitStyle,
+      textBaseline
     } = this
     if (orbitStyle) {
       drawCircle.call(this.ctx, {
@@ -100,7 +102,8 @@ class Circle {
       centerX,
       centerY,
       textStyle,
-      textFont: `${Math.floor(centerX / 1.5)}px sans-serif`,
+      textFont: `bold ${Math.floor(centerX / 1.5)}px sans-serif`,
+      textBaseline,
       content: parseInt(rate)
     })
     drawCircle.call(this.ctx, {

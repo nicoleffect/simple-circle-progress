@@ -10,7 +10,9 @@ function circleProgress ({
   circleStyle = '#000000',
   lineWidth = 10,
   orbitStyle = '',
-  textStyle = '#000000'
+  textStyle = '#000000',
+  textBaseline = 'middle'
+  // textBaseline = 'alphabetic'
 }) {
   return new Circle({
     canvas,
@@ -22,7 +24,8 @@ function circleProgress ({
     circleStyle,
     lineWidth,
     orbitStyle,
-    textStyle
+    textStyle,
+    textBaseline
   })
 }
 

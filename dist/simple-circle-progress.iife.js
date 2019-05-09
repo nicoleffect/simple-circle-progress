@@ -362,12 +362,13 @@ var circleProgress = (function () {
 	      centerY = _ref2.centerY,
 	      textStyle = _ref2.textStyle,
 	      textFont = _ref2.textFont,
+	      textBaseline = _ref2.textBaseline,
 	      content = _ref2.content;
 	  this.save();
 	  this.fillStyle = textStyle;
 	  this.font = textFont;
 	  this.textAlign = 'center';
-	  this.textBaseline = 'middle';
+	  this.textBaseline = textBaseline;
 	  this.fillText(content, centerX, centerY);
 	  this.restore();
 	}
@@ -385,7 +386,8 @@ var circleProgress = (function () {
 	        circleStyle = _ref3.circleStyle,
 	        lineWidth = _ref3.lineWidth,
 	        orbitStyle = _ref3.orbitStyle,
-	        textStyle = _ref3.textStyle;
+	        textStyle = _ref3.textStyle,
+	        textBaseline = _ref3.textBaseline;
 
 	    classCallCheck(this, Circle);
 
@@ -407,6 +409,7 @@ var circleProgress = (function () {
 	    this.circleStyle = circleStyle;
 	    this.lineWidth = lineWidth;
 	    this.textStyle = textStyle;
+	    this.textBaseline = textBaseline;
 	    this.orbitStyle = orbitStyle;
 	    this.completeCallback = null;
 	    this.init(canvas, isAnim);
@@ -445,7 +448,8 @@ var circleProgress = (function () {
 	          dash = this.dash,
 	          lineCap = this.lineCap,
 	          clockwise = this.clockwise,
-	          orbitStyle = this.orbitStyle;
+	          orbitStyle = this.orbitStyle,
+	          textBaseline = this.textBaseline;
 
 	      if (orbitStyle) {
 	        drawCircle.call(this.ctx, {
@@ -462,7 +466,8 @@ var circleProgress = (function () {
 	        centerX: centerX,
 	        centerY: centerY,
 	        textStyle: textStyle,
-	        textFont: "".concat(Math.floor(centerX / 1.5), "px sans-serif"),
+	        textFont: "bold ".concat(Math.floor(centerX / 1.5), "px sans-serif"),
+	        textBaseline: textBaseline,
 	        content: _parseInt$2(rate)
 	      });
 	      drawCircle.call(this.ctx, {
@@ -535,7 +540,9 @@ var circleProgress = (function () {
 	      _ref$orbitStyle = _ref.orbitStyle,
 	      orbitStyle = _ref$orbitStyle === void 0 ? '' : _ref$orbitStyle,
 	      _ref$textStyle = _ref.textStyle,
-	      textStyle = _ref$textStyle === void 0 ? '#000000' : _ref$textStyle;
+	      textStyle = _ref$textStyle === void 0 ? '#000000' : _ref$textStyle,
+	      _ref$textBaseline = _ref.textBaseline,
+	      textBaseline = _ref$textBaseline === void 0 ? 'middle' : _ref$textBaseline;
 	  return new Circle({
 	    canvas: canvas,
 	    isAnim: isAnim,
@@ -546,7 +553,8 @@ var circleProgress = (function () {
 	    circleStyle: circleStyle,
 	    lineWidth: lineWidth,
 	    orbitStyle: orbitStyle,
-	    textStyle: textStyle
+	    textStyle: textStyle,
+	    textBaseline: textBaseline
 	  });
 	}
 
