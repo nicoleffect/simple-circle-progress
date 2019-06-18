@@ -1,6 +1,6 @@
 {
   "name": "simple-circle-progress",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "a simple circe progress",
   "scripts": {
     "dev": "rollup -c --environment NODE_ENV:dev -w",

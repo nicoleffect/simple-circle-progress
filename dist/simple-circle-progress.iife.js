@@ -1,5 +1,5 @@
 /*!
- * simple-circle-progress v1.2.0
+ * simple-circle-progress v1.2.1
  * (c) 2019 Nicole Wong
  * Released under the MIT License.
  */
@@ -25,7 +25,7 @@ var circleProgress = (function () {
 	});
 
 	var _core = createCommonjsModule(function (module) {
-	var core = module.exports = { version: '2.6.5' };
+	var core = module.exports = { version: '2.6.9' };
 	if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 	});
 	var _core_1 = _core.version;
@@ -294,7 +294,7 @@ var circleProgress = (function () {
 	}();
 
 	/*!
-	 * canvas-retina v1.0.0
+	 * canvas-retina v1.0.2
 	 * (c) 2019 Nicole Wong
 	 * Released under the MIT License.
 	 */
@@ -319,6 +319,7 @@ var circleProgress = (function () {
 	  ctx.scale(pixelRatio, pixelRatio);
 	  ctx.translate(1 / pixelRatio, 1 / pixelRatio);
 	  return {
+	    pixelRatio: pixelRatio,
 	    ctx: ctx,
 	    rect: rect
 	  };

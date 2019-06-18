@@ -1,5 +1,5 @@
 /*!
- * simple-circle-progress v1.1.2
+ * simple-circle-progress v1.2.1
  * (c) 2019 Nicole Wong
  * Released under the MIT License.
  */
@@ -24,7 +24,7 @@ if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 });
 
 var _core = createCommonjsModule(function (module) {
-var core = module.exports = { version: '2.6.5' };
+var core = module.exports = { version: '2.6.9' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 });
 var _core_1 = _core.version;
@@ -293,7 +293,7 @@ var isMobile = function () {
 }();
 
 /*!
- * canvas-retina v1.0.0
+ * canvas-retina v1.0.2
  * (c) 2019 Nicole Wong
  * Released under the MIT License.
  */
@@ -318,6 +318,7 @@ function canvasRetina(canvas) {
   ctx.scale(pixelRatio, pixelRatio);
   ctx.translate(1 / pixelRatio, 1 / pixelRatio);
   return {
+    pixelRatio: pixelRatio,
     ctx: ctx,
     rect: rect
   };
@@ -361,12 +362,13 @@ function drawText(_ref2) {
       centerY = _ref2.centerY,
       textStyle = _ref2.textStyle,
       textFont = _ref2.textFont,
+      textBaseline = _ref2.textBaseline,
       content = _ref2.content;
   this.save();
   this.fillStyle = textStyle;
   this.font = textFont;
   this.textAlign = 'center';
-  this.textBaseline = 'middle';
+  this.textBaseline = textBaseline;
   this.fillText(content, centerX, centerY);
   this.restore();
 }
@@ -384,7 +386,8 @@ function () {
         circleStyle = _ref3.circleStyle,
         lineWidth = _ref3.lineWidth,
         orbitStyle = _ref3.orbitStyle,
-        textStyle = _ref3.textStyle;
+        textStyle = _ref3.textStyle,
+        textBaseline = _ref3.textBaseline;
 
     classCallCheck(this, Circle);
 
@@ -406,6 +409,7 @@ function () {
     this.circleStyle = circleStyle;
     this.lineWidth = lineWidth;
     this.textStyle = textStyle;
+    this.textBaseline = textBaseline;
     this.orbitStyle = orbitStyle;
     this.completeCallback = null;
     this.init(canvas, isAnim);
@@ -444,7 +448,8 @@ function () {
           dash = this.dash,
           lineCap = this.lineCap,
           clockwise = this.clockwise,
-          orbitStyle = this.orbitStyle;
+          orbitStyle = this.orbitStyle,
+          textBaseline = this.textBaseline;
 
       if (orbitStyle) {
         drawCircle.call(this.ctx, {
@@ -461,7 +466,8 @@ function () {
         centerX: centerX,
         centerY: centerY,
         textStyle: textStyle,
-        textFont: "".concat(Math.floor(centerX / 1.5), "px sans-serif"),
+        textFont: "bold ".concat(Math.floor(centerX / 1.5), "px sans-serif"),
+        textBaseline: textBaseline,
         content: _parseInt$2(rate)
       });
       drawCircle.call(this.ctx, {
@@ -534,7 +540,9 @@ function circleProgress(_ref) {
       _ref$orbitStyle = _ref.orbitStyle,
       orbitStyle = _ref$orbitStyle === void 0 ? '' : _ref$orbitStyle,
       _ref$textStyle = _ref.textStyle,
-      textStyle = _ref$textStyle === void 0 ? '#000000' : _ref$textStyle;
+      textStyle = _ref$textStyle === void 0 ? '#000000' : _ref$textStyle,
+      _ref$textBaseline = _ref.textBaseline,
+      textBaseline = _ref$textBaseline === void 0 ? 'middle' : _ref$textBaseline;
   return new Circle({
     canvas: canvas,
     isAnim: isAnim,
@@ -545,7 +553,8 @@ function circleProgress(_ref) {
     circleStyle: circleStyle,
     lineWidth: lineWidth,
     orbitStyle: orbitStyle,
-    textStyle: textStyle
+    textStyle: textStyle,
+    textBaseline: textBaseline
   });
 }
 
