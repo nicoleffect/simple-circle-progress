@@ -13,6 +13,7 @@ function circleProgress ({
   textStyle = '#000000',
   textBaseline = 'middle'
   // textBaseline = 'alphabetic'
+  // textBaseline = 'hanging'
 }) {
   return new Circle({
     canvas,

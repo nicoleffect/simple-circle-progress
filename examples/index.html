@@ -26,8 +26,8 @@
 
 
     canvas {
-      width: 120px;
-      height: 120px;
+      width: 100px;
+      height: 100px;
       box-sizing: border-box;
       margin: 10px;
       vertical-align: middle
@@ -81,7 +81,8 @@
       rate: 88,
       circleStyle: '#ffd50a',
       dash: true,
-      orbitStyle: '#ffffff'
+      orbitStyle: '#ffffff',
+      textBaseline: 'alphabetic'
     });
 
     circleProgress({
@@ -89,8 +90,9 @@
       rate: 82,
       circleStyle: '#84d276',
       textStyle: '#E57373',
-      clockwise: true
-    });
+      clockwise: true,
+      textBaseline: 'hanging'
+    })
 
     circleProgress({
       canvas: document.getElementById('canvas4'),
@@ -101,14 +103,6 @@
       lineWidth: 18
     });
 
-    circleProgress({
-      canvas: document.getElementById('canvas5'),
-      rate: 78,
-      circleStyle: '#E57373',
-      textStyle: '',
-      lineCap: 'round',
-      lineWidth: 18
-    });
 
   </script>
 </body>

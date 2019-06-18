@@ -16,7 +16,8 @@ const circle = circleProgress ({
   circleStyle = '#000000', // default
   lineWidth = 10, // default
   orbitStyle = '',
-  textStyle = '#000000' // default
+  textStyle = '#000000', // default
+  textBaseline = 'middle' // default
 })
 
 // plus
@@ -54,15 +55,17 @@ circleProgress({
   rate: 88,
   circleStyle: '#ffd50a',
   dash: true,
-  orbitStyle: '#ffffff'
-})
+  orbitStyle: '#ffffff',
+  textBaseline: 'alphabetic'
+});
 
 circleProgress({
   canvas: document.getElementById('canvas3'),
   rate: 82,
   circleStyle: '#84d276',
   textStyle: '#E57373',
-  clockwise: true
+  clockwise: true,
+  textBaseline: 'hanging'
 })
 
 circleProgress({
